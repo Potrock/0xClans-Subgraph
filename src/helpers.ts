@@ -13,6 +13,7 @@ export function createUser(
 	user.createdAtTimestamp = createdAtTimestamp;
 	user.clanCount = 0;
 	user.clans = [];
+	user.accounts = [];
 	user.save();
 
 	return user;

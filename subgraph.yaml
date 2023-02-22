@@ -22,6 +22,26 @@ dataSources:
               - event: ClanCreated(indexed address,string,string,indexed address)
                 handler: handleClanCreated
           file: ./src/factory.ts
+    - kind: ethereum
+      name: AccountLinker
+      network: mumbai
+      source:
+          address: "0x701a89d25629E57283D7F1817d9eEcc05057a76e"
+          abi: AccountLinker
+          startBlock: 31704068
+      mapping:
+          kind: ethereum/events
+          apiVersion: 0.0.7
+          language: wasm/assemblyscript
+          entities:
+              - AccountLinker
+          abis:
+              - name: AccountLinker
+                file: ./abis/AccountLinker.json
+          eventHandlers:
+              - event: AccountLinked(indexed address,string,string)
+                handler: handleAccountLinked
+          file: ./src/accountlinker.ts
 templates:
     - kind: ethereum/contract
       name: Clan

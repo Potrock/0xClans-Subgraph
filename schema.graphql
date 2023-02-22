@@ -34,4 +34,14 @@ type User @entity {
 
 	# clan
 	clans: [Clan!]!
+
+	# account linking
+	accounts: [Account!]!
+}
+
+type Account @entity {
+	id: ID!
+	address: String! #the user wallet address
+	platform: String! #the platform name
+	uuid: String! #the user uuid on the platform
 }

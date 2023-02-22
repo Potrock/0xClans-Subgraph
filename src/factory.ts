@@ -24,7 +24,6 @@ export function handleClanCreated(event: ClanCreatedEvent): void {
 			event.block.number,
 			event.block.timestamp
 		);
-		leader.clanCount += 1;
 	}
 
 	// Create a new clan entity
@@ -43,10 +42,12 @@ export function handleClanCreated(event: ClanCreatedEvent): void {
 
 	clan.save();
 
-	if (leader.clans == null) {
+	if (leader.clans.length == 0) {
 		leader.clans = [clan.id];
+		leader.clanCount = 1;
 	} else {
-		leader.clans.push(clan.id);
+		leader.clans.concat([clan.id]);
+		leader.clanCount += 1;
 	}
 
 	leader.save();

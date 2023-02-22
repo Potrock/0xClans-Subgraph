@@ -1,0 +1,49 @@
+specVersion: 0.0.5
+schema:
+    file: ./schema.graphql
+dataSources:
+    - kind: ethereum
+      name: ClanFactory
+      network: mumbai
+      source:
+          address: "0xC52fD7621DEdF41dd0757EE26AB7af8128Eb26cd"
+          abi: ClanFactory
+          startBlock: 32181169
+      mapping:
+          kind: ethereum/events
+          apiVersion: 0.0.7
+          language: wasm/assemblyscript
+          entities:
+              - Factory
+          abis:
+              - name: ClanFactory
+                file: ./abis/ClanFactory.json
+          eventHandlers:
+              - event: ClanCreated(indexed address,string,string,indexed address)
+                handler: handleClanCreated
+          file: ./src/factory.ts
+templates:
+    - kind: ethereum/contract
+      name: Clan
+      network: mumbai
+      source:
+          abi: Clan
+      mapping:
+          kind: ethereum/events
+          apiVersion: 0.0.7
+          language: wasm/assemblyscript
+          file: ./src/clan.ts
+          entities:
+              - Clan
+          abis:
+              - name: Clan
+                file: ./abis/SimpleClan.json
+          eventHandlers:
+              - event: MemberAdded(indexed address,indexed address)
+                handler: handleMemberAdded
+              - event: MemberRemoved(indexed address,indexed address)
+                handler: handleMemberRemoved
+              - event: NameChanged(string,indexed address)
+                handler: handleNameChanged
+              - event: SymbolChanged(string,indexed address)
+                handler: handleSymbolChanged

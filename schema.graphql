@@ -1,0 +1,37 @@
+type ClanFactory @entity {
+	id: ID!
+	clanCount: Int!
+
+	# creation stats
+	createdAtTimestamp: BigInt!
+	createdAtBlock: BigInt!
+}
+
+type Clan @entity {
+	# clan address
+	id: ID!
+
+	# from smart contract
+	name: String!
+	symbol: String!
+	leader: User!
+	members: [User!]!
+
+	# creation stats
+	createdAtTimestamp: BigInt!
+	createdAtBlock: BigInt!
+	transactionHash: String!
+}
+
+type User @entity {
+	# Complete this
+	id: ID!
+	clanCount: Int!
+
+	# creation stats
+	createdAtTimestamp: BigInt!
+	createdAtBlock: BigInt!
+
+	# clan
+	clans: [Clan!]!
+}

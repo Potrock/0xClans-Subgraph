@@ -1,0 +1,11 @@
+{
+  "mumbai": {
+    "ClanFactoryClones": {
+      "address": "0x7372d48Fb9A1c52AA7E6D99c1C84Cc47D294196A",
+      "startBlock": 32181169
+    },
+    "SimpleClanTemplate": {
+      "address": "0x12eBB7c62F54745cf767d3B17a597d8FE0256dfA"
+    }
+  }
+}

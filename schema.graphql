@@ -39,6 +39,12 @@ type User @entity {
 	accounts: [Account!]!
 }
 
+type UserFactory @entity {
+	id: ID!
+	userCount: Int!
+	accountCount: Int!
+}
+
 type Account @entity {
 	id: ID!
 	address: String! #the user wallet address

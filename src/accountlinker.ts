@@ -1,6 +1,6 @@
 import { Account, User } from "../generated/schema";
 import { AccountLinked as AccountLinkedEvent } from "../generated/AccountLinker/AccountLinker";
-import { createUser } from "./helpers";
+import { createUser, increaseAccountCount } from "./helpers";
 
 export function handleAccountLinked(event: AccountLinkedEvent): void {
 	// Get the user entity
@@ -34,6 +34,7 @@ export function handleAccountLinked(event: AccountLinkedEvent): void {
 	let account = new Account(
 		event.transaction.hash.toHexString() + "-" + event.logIndex.toString()
 	);
+	increaseAccountCount();
 	// Set the account's properties
 	account.platform = event.params.platform;
 	account.uuid = event.params.uuid;

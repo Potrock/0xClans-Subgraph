@@ -26,9 +26,9 @@ dataSources:
       name: AccountLinker
       network: mumbai
       source:
-          address: "0x701a89d25629E57283D7F1817d9eEcc05057a76e"
+          address: "0x9197c2F7b2dd0A6AfF7af3027AA48FBAAc802EA5"
           abi: AccountLinker
-          startBlock: 31704068
+          startBlock: 32880681
       mapping:
           kind: ethereum/events
           apiVersion: 0.0.7
@@ -41,6 +41,8 @@ dataSources:
           eventHandlers:
               - event: AccountLinked(indexed address,string,string)
                 handler: handleAccountLinked
+              - event: AccountUnlinked(indexed address,string,string)
+                handler: handleAccountUnlinked
           file: ./src/accountlinker.ts
 templates:
     - kind: ethereum/contract
